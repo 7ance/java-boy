@@ -59,7 +59,8 @@ public class TotpUtils {
         Objects.requireNonNull(issuer, "issuer must not be null");
         Objects.requireNonNull(accountName, "accountName must not be null");
 
-        return String.format("otpauth://totp/%s:%s?secret=%s", issuer, accountName, generateSecret());
+        return String.format("otpauth://totp/%s?secret=%s&issuer=%s&digits=%d&period=%d",
+                accountName, generateSecret(), issuer, PASSCODE_LENGTH, PERIOD);
     }
 
     /**
